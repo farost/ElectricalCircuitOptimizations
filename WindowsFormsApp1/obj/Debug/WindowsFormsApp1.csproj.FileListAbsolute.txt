@@ -1,0 +1,10 @@
+D:\Documents\Оптимизация МИЭМ\ProgramNovoselov\OptimizationLab\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+D:\Documents\Оптимизация МИЭМ\ProgramNovoselov\OptimizationLab\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+D:\Documents\Оптимизация МИЭМ\ProgramNovoselov\OptimizationLab\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Resource1.resources
+D:\Documents\Оптимизация МИЭМ\ProgramNovoselov\OptimizationLab\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+D:\Documents\Оптимизация МИЭМ\ProgramNovoselov\OptimizationLab\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+D:\Documents\Оптимизация МИЭМ\ProgramNovoselov\OptimizationLab\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+D:\Documents\Оптимизация МИЭМ\ProgramNovoselov\OptimizationLab\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+D:\Documents\Оптимизация МИЭМ\ProgramNovoselov\OptimizationLab\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+D:\Documents\Оптимизация МИЭМ\ProgramNovoselov\OptimizationLab\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+D:\Documents\Оптимизация МИЭМ\ProgramNovoselov\OptimizationLab\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
