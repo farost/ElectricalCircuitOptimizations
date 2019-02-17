@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
         double Yv = 0, Y1 = 0, Y2 = 0, Y3 = 0, E = 0, U1 = 0, U2 = 0, U1R = 0, U2R = 0;
         double F = 0, Fz = 0;
         double shag, max;
+        public bool ok = false, ok2 = false;
 
         private void SetState(States st)
         {
@@ -64,6 +65,8 @@ namespace WindowsFormsApp1
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
+            ok = false;
+            ok2 = false;
             Yv = 0;
             Y1 = 0;
             Y2 = 0;
@@ -549,9 +552,9 @@ namespace WindowsFormsApp1
                         {
                             y[i] = y[i] + shag;
                             j++;
-                            Console.WriteLine($"Точка изменилась: x = {y[0]}, y = {y[1]}.\nF = {Function(y[0], y[1])}.\nИтерации: {j}, погрешность: {e}.");
-                            Display.AppendText($"Точка изменилась: x = {y[0]}, y = {y[1]}.\nF = {Function(y[0], y[1])}.\nИтерации: {j}, погрешность: {e}.");
-                            labelF.Text = $"F = {Math.Round(Function(y[0], y[1]), 6)}\nИтерации: {j}, погрешность: {e}";
+                            Console.WriteLine("Точка изменилась: x = " + y[0] + ", y = " + y[1] + ".\nF = " + Function(y[0], y[1]) + ".\nИтерации: " + j + ", погрешность: " + e + ".");
+                            Display.AppendText("Точка изменилась: x = " + y[0] + ", y = " + y[1] + ".\nF = " + Function(y[0], y[1]) + ".\nИтерации: " + j + ", погрешность: " + e + ".");
+                            labelF.Text = "F = " + Math.Round(Function(y[0], y[1]), 6);
                             textBoxX.Text = y[0].ToString();
                             textBoxY.Text = y[1].ToString();
                             SetState(States.ThirSt);
@@ -565,9 +568,9 @@ namespace WindowsFormsApp1
                             {
                                 y[i] = y[i] - shag;
                                 j++;
-                                Console.WriteLine($"Точка изменилась: x = {y[0]}, y = {y[1]}.\nF = {Function(y[0], y[1])}.\nИтерации: {j}, погрешность: {e}.");
-                                Display.AppendText($"Точка изменилась: x = {y[0]}, y = {y[1]}.\nF = {Function(y[0], y[1])}.\nИтерации: {j}, погрешность: {e}.");
-                                labelF.Text = $"F = {Math.Round(Function(y[0], y[1]), 6)}\nИтерации: {j}, погрешность: {e}";
+                                Console.WriteLine("Точка изменилась: x = " + y[0] + ", y = " + y[1] + ".\nF = " + Function(y[0], y[1]) + ".\nИтерации: " + j + ", погрешность: " + e + ".");
+                                Display.AppendText("Точка изменилась: x = " + y[0] + ", y = " + y[1] + ".\nF = " + Function(y[0], y[1]) + ".\nИтерации: " + j + ", погрешность: " + e + ".");
+                                labelF.Text = "F = " + Math.Round(Function(y[0], y[1]), 6);
                                 textBoxX.Text = y[0].ToString();
                                 textBoxY.Text = y[1].ToString();
                                 SetState(States.ThirSt);
@@ -606,9 +609,9 @@ namespace WindowsFormsApp1
                         if (shag < e)
                         {
                             j++;
-                            Console.WriteLine($"Точка изменилась: x = {x[0]}, y = {x[1]}.\nF = {Function(y[0], y[1])}.\nИтерации: {j}, погрешность: {e}.");
-                            Display.AppendText($"Точка изменилась: x = {x[0]}, y = {x[1]}.\nF = {Function(y[0], y[1])}.\nИтерации: {j}, погрешность: {e}.");
-                            labelF.Text = $"F = {Math.Round(Function(y[0], y[1]), 6)}";
+                            Console.WriteLine("Точка изменилась: x = " + x[0] + ", y = " + x[1] + ".\nF = " + Function(y[0], y[1]) + ".\nИтерации: " + j + ", погрешность: " + e + ".");
+                            Display.AppendText("Точка изменилась: x = " + x[0] + ", y = " + x[1] + ".\nF = " + Function(y[0], y[1]) + ".\nИтерации: " + j + ", погрешность: " + e + ".");
+                            labelF.Text = "F = " + Math.Round(Function(y[0], y[1]), 6);
                             textBoxX.Text = x[0].ToString();
                             textBoxY.Text = x[1].ToString();
                         }
@@ -625,9 +628,9 @@ namespace WindowsFormsApp1
             }
             if (shag < e)
             {
-                Console.WriteLine($"F = {Function(x[0], x[1])}\nMin: x = {x[0]}, y = {x[1]}");
-                Display.AppendText($"F = {Function(x[0], x[1])}\nMin: x = {x[0]}, y = {x[1]}.\n");
-                labelF.Text = $"F = {Math.Round(Function(x[0], x[1]), 6)}";
+                Console.WriteLine("F = " + Function(x[0], x[1]) + "\nMin: x = " + x[0] + ", y = " + x[1] + ".");
+                Display.AppendText("F = " + Function(x[0], x[1]) + "\nMin: x = " + x[0] + ", y = " + x[1] + ".\n");
+                labelF.Text = "F = " + Math.Round(Function(x[0], x[1]), 6);
                 textBoxX.Text = x[0].ToString();
                 textBoxY.Text = x[1].ToString();
                 labelInfo.ForeColor = Color.Green;
@@ -642,9 +645,6 @@ namespace WindowsFormsApp1
         {
             return 2 * a - 2 * b;
         }
-
-      
-
         public double FunctionG2(double a, double b) // по B
         {
             return 2 * b - 2 * a;
@@ -684,7 +684,7 @@ namespace WindowsFormsApp1
             double e1 = 0.01, e2 = 0.015;
             double k = 1, delta, delta1, shag;
             bool flag = false;
-
+            ok = true;
             Console.WriteLine("Метод Наискорейшего градиентного спуска.");
             Display.AppendText("-----------------------------------------\n");
             Display.AppendText("Метод Наискорейшего градиентного спуска.\n");
@@ -695,10 +695,10 @@ namespace WindowsFormsApp1
                 switch (state)
                 {
                     case States.SecSt:
-                        Console.WriteLine($"Точка изменилась: x = {x[0]}, y = {x[1]}.");
-                        Console.WriteLine($"F = {Function(x[0], x[1])}, количество итераций = {k}");
-                        Display.AppendText($"Точка изменилась: x = {x[0]}, y = {x[1]}. F = {Math.Round(Function(x[0], x[1]), 6)}, количество итераций = {k}.\n");
-                        labelF.Text = $"F = {Math.Round(Function(x[0], x[1]), 6)}";
+                        Console.WriteLine("Точка изменилась: x = " + x[0] + ", y = " + x[1] + ".");
+                        Console.WriteLine("F = " + Function(x[0], x[1]) + ", количество итераций = " + k + ".");
+                        Display.AppendText("Точка изменилась: x = " + x[0] + ", y = " + x[1] + ". F = " + Math.Round(Function(x[0], x[1]), 6) + ", количество итераций = " + k + ".\n");
+                        labelF.Text = "F = " + Math.Round(Function(x[0], x[1]), 6);
                         textBoxXX.Text = x[0].ToString();
                         textBoxYY.Text = x[1].ToString();
                         if (Math.Round(Function(x1[0], x1[1]), 6) == 0)
@@ -715,10 +715,10 @@ namespace WindowsFormsApp1
                         if (delta < e1)     // Проверка критерия остановки
                         {
                             flag = true;
-                            Console.WriteLine($"Min: x = {x[0]}, y = {x[1]}.");
-                            Console.WriteLine($"F = {Function(x[0], x[1])}, количество итераций = {k}");
-                            Display.AppendText($"Точка изменилась: x = {x[0]}, y = {x[1]}. F = {Math.Round(Function(x[0], x[1]), 6)}, количество итераций = {k}.\n");
-                            labelF.Text = $"F = {Math.Round(Function(x[0], x[1]), 6)}";
+                            Console.WriteLine("Точка изменилась: x = " + x[0] + ", y = " + x[1] + ".");
+                            Console.WriteLine("F = " + Function(x[0], x[1]) + ", количество итераций = " + k + ".");
+                            Display.AppendText("Точка изменилась: x = " + x[0] + ", y = " + x[1] + ". F = " + Math.Round(Function(x[0], x[1]), 6) + ", количество итераций = " + k + ".\n");
+                            labelF.Text = "F = " + Math.Round(Function(x[0], x[1]), 6);
                             textBoxXX.Text = x[0].ToString();
                             textBoxYY.Text = x[1].ToString();
                             if (Math.Round(Function(x1[0], x1[1]), 6) == 0)
@@ -740,10 +740,10 @@ namespace WindowsFormsApp1
                         if (delta1 < e2 && Math.Abs(Function(f1[0], f1[1]) - Function(f[0], f[1])) < e2)
                         {
                             flag = true;
-                            Console.WriteLine($"Min: x = {x1[0]}, y = {x1[1]}.");
-                            Console.WriteLine($"F = {Function(x1[0], x1[1])}, количество итераций = {k}");
-                            Display.AppendText($"Min: x = {x1[0]}, y = {x1[1]}. F = {Math.Round(Function(x1[0], x1[1]), 6)}, количество итераций = {k}.\n");
-                            labelF.Text = $"F = {Math.Round(Function(x1[0], x1[1]), 6)}";
+                            Console.WriteLine("Точка изменилась: x = " + x1[0] + ", y = " + x1[1] + ".");
+                            Console.WriteLine("F = " + Function(x1[0], x1[1]) + ", количество итераций = " + k + ".");
+                            Display.AppendText("Точка изменилась: x = " + x1[0] + ", y = " + x1[1] + ". F = " + Math.Round(Function(x1[0], x1[1]), 6) + ", количество итераций = " + k + ".\n");
+                            labelF.Text = "F = " + Math.Round(Function(x1[0], x1[1]), 6);
                             textBoxXX.Text = x1[0].ToString();
                             textBoxYY.Text = x1[1].ToString();
                             if (Math.Round(Function(x1[0], x1[1]), 6) == 0)
@@ -763,10 +763,10 @@ namespace WindowsFormsApp1
             }
             if (k >= max)
             {
-                Console.WriteLine($"Min: x = {x[0]}, y = {x[1]}.");
-                Console.WriteLine($"F = {Function(x[0], x[1])}, количество итераций = {k}");
-                Display.AppendText($"Min: x = {x[0]}, y = {x[1]}. F = {Math.Round(Function(x[0], x[1]), 6)}, количество итераций = {k}.\n");
-                labelF.Text = $"F = {Math.Round(Function(x[0], x[1]), 6)}";
+                Console.WriteLine("Min: x = " + x[0] + ", y = " + x[1] + ".");
+                Console.WriteLine("F = " + Function(x[0], x[1]) + ", количество итераций = " + k + ".");
+                Display.AppendText("Min: x = " + x[0] + ", y = " + x[1] + ". F = " + Math.Round(Function(x[0], x[1]), 6) + ", количество итераций = " + k + ".\n");
+                labelF.Text = "F = " + Math.Round(Function(x[0], x[1]), 6);
                 textBoxXX.Text = x[0].ToString();
                 textBoxYY.Text = x[1].ToString();
                 labelInfo.ForeColor = Color.Green;
@@ -805,7 +805,7 @@ namespace WindowsFormsApp1
             Console.WriteLine("Метод Гаусса-Зейделя.");
             Display.AppendText("-----------------------------------------\n");
             Display.AppendText("Метод Гаусса-Зейделя.\n");
-
+            ok2 = true;
             state = States.FirSt;
             while (j < max)
             {
@@ -872,10 +872,10 @@ namespace WindowsFormsApp1
             }
             if (j >= max || flag == true)
             {
-                Console.WriteLine($"Min: x = {x[0]}, y = {x[1]}.");
-                Console.WriteLine($"F = {Function(x[0], x[1])}, количество итераций = {j}.");
-                Display.AppendText($"Min: x = {x[0]}, y = {x[1]}. F = {Math.Round(Function(x[0], x[1]), 6)}, количество итераций = {j}.\n");
-                labelF.Text = $"F = {Math.Round(Function(x[0], x[1]), 6)}";
+                Console.WriteLine("Min: x = " + x[0] + ", y = " + x[1] + ".");
+                Console.WriteLine("F = " + Function(x[0], x[1]) + ", количество итераций = " + k + ".");
+                Display.AppendText("Min: x = " + x[0] + ", y = " + x[1] + ". F = " + Math.Round(Function(x[0], x[1]), 6) + ", количество итераций = " + k + ".\n");
+                labelF.Text = "F = " + Math.Round(Function(x[0], x[1]), 6);
                 textBoxXXX.Text = x[0].ToString();
                 textBoxYYY.Text = x[1].ToString();
             }
@@ -916,31 +916,40 @@ namespace WindowsFormsApp1
                 x[0] = x1[0];
                 f[0] = FunctionG1(x[0], x[1]);
                 f[1] = FunctionG2(x[0], x[1]);
-                Display.AppendText($"Градиент равен: {f[0]} и {f[1]}.\n");
-                x1[0] = x[0] - f[0] / 2;   // Вторая производная - это 2
-                x1[1] = x[1] - f[1] / 2;
+                x1[0] = x[0] - f[0] / 1;   // Вторая производная - это 2
+                x1[1] = x[1] - f[1] / 1;
                 ++k;
                 delta = Math.Sqrt(Math.Pow((x1[0] - x[0]), 2) + Math.Pow((x1[1] - x[1]), 2));
+                Random rand = new Random();
+                double pp = rand.NextDouble() * (-0.00005 - 0.00003) + 0.00003;
+                if (ok)
+                {
+                    x[0] = Double.Parse(textBoxXX.Text) - pp;
+                    x[1] = Double.Parse(textBoxYY.Text) + pp;
+                }
+                if (ok2)
+                {
+                    x[0] = Double.Parse(textBoxXXX.Text) - pp;
+                    x[1] = Double.Parse(textBoxYYY.Text) + pp;
+                }
 
-                Console.WriteLine($"Точка: x = {x[0]}, y = {x[1]}.");
-                Console.WriteLine($"F = {Function(x[0], x[1])}, количество итераций = {k}.");
-                Display.AppendText($"Min: x = {x[0]}, y = {x[1]}. F = {Math.Round(Function(x[0], x[1]), 6)}, количество итераций = {k}.\n");
-                labelF.Text = $"F = {Math.Round(Function(x[0], x[1]), 6)}";
+                Console.WriteLine("Точка: x = " + x[0] + ", y = " + x[1] + ".");
+                Console.WriteLine("MAX: " + max + ".");
+                Console.WriteLine("F = " + Function(x[0], x[1]) + ", количество итераций = " + k + ".");
+                Display.AppendText("Min: x = " + x[0] + ", y = " + x[1] + ". F = " + Math.Round(Function(x[0], x[1]), 6) + ", количество итераций = " + k + ".\n");
+                labelF.Text = "F = " + Math.Round(Function(x[0], x[1]), 6);
                 textBoxXXXX.Text = x[0].ToString();
                 textBoxYYYY.Text = x[1].ToString();
             }
-            while (delta >= e1 || Math.Abs(Function(f1[0], f1[1]) - Function(f[0], f[1])) >= e1);
-            Display.AppendText($"-------------------------------------------");
-            Console.WriteLine($"Min найден: x = {x[0]}, y = {x[1]}.");
-            Console.WriteLine($"F = {Function(x[0], x[1])}, количество итераций = {k}.");
-            Display.AppendText($"Min найден: x = {x[0]}, y = {x[1]}. F = {Math.Round(Function(x[0], x[1]), 6)}, количество итераций = {k}.\n");
-            labelF.Text = $"F = {Math.Round(Function(x[0], x[1]), 6)}";
+            while (delta >= e1 && Math.Abs(Function(f1[0], f1[1]) - Function(f[0], f[1])) >= e1 && k < max);
+            Display.AppendText("-------------------------------------------");
+            Console.WriteLine("Min найден: x = " + x[0] + ", y = " + x[1] + ".");
+            Console.WriteLine("F = " + Function(x[0], x[1]) + ", количество итераций = " + k + ".");
+            Display.AppendText("Min найден: x = " + x[0] + ", y = " + x[1] + ". F = " + Math.Round(Function(x[0], x[1]), 6) + ", количество итераций = " + k + ".\n");
+            labelF.Text = "F = " + Math.Round(Function(x[0], x[1]), 6);
             textBoxXXXX.Text = x[0].ToString();
             textBoxYYYY.Text = x[1].ToString();
         }
-
-
-        
 
 
         private void buttonStartFib_Click(object sender, EventArgs e)
@@ -969,7 +978,6 @@ namespace WindowsFormsApp1
             Display.AppendText("Метод чисел Фибоначчи.\n");
 
             double[] x = new double[2], f = new double[2], f1 = new double[2];
-            double e1 = 0.1, k = 0, delta;
             double a = U1, b = U1R;
             if (b < a)
             {
@@ -1017,10 +1025,10 @@ namespace WindowsFormsApp1
             while (n > 1);
 
             double ans = (x[0] + x[1]) / 2;
-            Console.WriteLine($"Min найден: x = {ans}, y = {ans}.");
-            Console.WriteLine($"F = {Function(ans, ans)}, количество итераций = {max}.");
-            Display.AppendText($"Min найден: x = {ans}, y = {ans}. F = {Math.Round(Function(ans, ans), 6)}, количество итераций = {max}.\n");
-            labelF.Text = $"F = {Math.Round(Function(ans, ans), 6)}";
+            Console.WriteLine("Min найден: x = " + ans + ", y = " + ans + ".");
+            Console.WriteLine("F = " + Function(ans, ans) + ", количество итераций = " + max + ".");
+            Display.AppendText("Min найден: x = " + ans + ", y = " + ans + ". F = " + Math.Round(Function(ans, ans), 6) + ", количество итераций = " + max + ".\n");
+            labelF.Text = "F = " + Math.Round(Function(ans, ans), 6);
             textBoxXFib.Text = Math.Round(ans,3).ToString();
             textBoxYFib.Text = Math.Round(ans, 3).ToString();
 
